@@ -1,0 +1,12 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: example-job
+spec:
+  backoffLimit: 10
+  template:
+    spec:
+      containers:
+      - name: example
+        image: example/image
+      restartPolicy: Never
