@@ -1,12 +1,13 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: example-job
+  name: echo-job
 spec:
-  backoffLimit: 10
+  completions: 5
   template:
     spec:
+      restartPolicy: OnFailure
       containers:
-      - name: example
-        image: example/image
-      restartPolicy: Never
+      - name: echo
+        image: busybox
+        command: ["echo", "Running in a job"]
